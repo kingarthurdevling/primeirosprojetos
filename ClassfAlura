@@ -1,0 +1,83 @@
+var jogadores = [
+  {
+    nome: "Paulo",
+    vitoria: 0,
+    empate: 0,
+    derrota: 0,
+    pontos: 0,
+  },
+  {
+    nome: "Rafa",
+    vitoria: 0,
+    empate: 0,
+    derrota: 0,
+    pontos: 0,
+  },
+  {
+    nome: "Gui",
+    vitoria: 0,
+    empate: 0,
+    derrota: 0,
+    pontos: 0,
+  },
+  {
+    nome: "Renato",
+    vitoria: 0,
+    empate: 0,
+    derrota: 0,
+    pontos: 0,
+  },
+];
+
+var elementoTabela = document.getElementById("tabelaJogadores");
+
+exibirNaTela();
+
+function exibirNaTela() {
+  // Create HTML for the table header
+  var tableHTML = `
+    <tr>
+      <th>Nome</th>
+      <th>Vitória</th>
+      <th>Empate</th>
+      <th>Derrota</th>
+      <th>Pontos</th>
+      <th colspan="3">Ações</th>
+    </tr>
+  `;
+
+  jogadores.forEach((jogador) => {
+    tableHTML += `
+      <tr>
+        <td>${jogador.nome}</td>
+        <td>${jogador.vitoria}</td>
+        <td>${jogador.empate}</td>
+        <td>${jogador.derrota}</td>
+        <td>${jogador.pontos}</td>
+        <td><button onClick="adicionarVitoria(${jogadores.indexOf(jogador)})">Vitória</button></td>
+        <td><button onClick="adicionarEmpate(${jogadores.indexOf(jogador)})">Empate</button></td>
+        <td><button onClick="adicionarDerrota(${jogadores.indexOf(jogador)})">Derrota</button></td>
+      </tr>
+    `;
+  });
+
+  // Set the innerHTML of the table
+  elementoTabela.innerHTML = tableHTML;
+}
+
+function adicionarVitoria(index) {
+  jogadores[index].vitoria++;
+  jogadores[index].pontos = jogadores[index].pontos + 3;
+  exibirNaTela();
+}
+
+function adicionarEmpate(index) {
+  jogadores[index].empate++;
+  jogadores[index].pontos = jogadores[index].pontos + 1;
+  exibirNaTela();
+}
+
+function adicionarDerrota(index) {
+  jogadores[index].derrota++;
+  exibirNaTela();
+}
