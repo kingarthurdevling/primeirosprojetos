@@ -1,0 +1,42 @@
+var listaFilmes = ['https://cdn.kobo.com/book-images/395aef2d-44e2-4f98-bb62-33d7130eabcf/1200/1200/False/gone-girl-movie-tie-in-edition-1.jpg','https://m.media-amazon.com/images/M/MV5BY2JjNmZlMGMtZDg2MC00MmMxLWEyNjEtNTFhM2I3YTUzMjU4XkEyXkFqcGdeQXVyNDQwMTQ5ODk@._V1_FMjpg_UX1000_.jpg','https://pics.filmaffinity.com/Evil_Dead_Rise-134812715-large.jpg','https://m.media-amazon.com/images/M/MV5BZmQ2OTA1MzctZmE3Zi00ODRlLWE2YzQtYjRkNTY4NWQxOGJjXkEyXkFqcGdeQXVyMjYwNjIyOTM@._V1_FMjpg_UX1000_.jpg','https://br.web.img3.acsta.net/pictures/20/02/21/07/43/5751122.jpg','https://versionindustries.com/images/work/birthrebirth/brb_poster_2000.jpg','https://br.web.img3.acsta.net/pictures/22/07/25/20/34/1901466.jpg','https://media.vogue.fr/photos/5d81ea39ca45aa0008fbad05/2:3/w_2560%2Cc_limit/IMG_20190917_201135.jpg','https://static.wikia.nocookie.net/netflix/images/a/a1/I_Care_a_Lot_Poster.jpg', 'https://www.themoviedb.org/t/p/original/6mv8ztyolP1dfxbQnQsL4DxNGvI.jpg' ];
+
+var listaNomes = ['Gone Girl', 'Door Mouse', 'Evil Dead Rise', 'Sissy', 'Run', 'Birth/Rebirth','Pearl', 'Birds Of Prey', 'I Care A Lot.', 'Monster'];
+
+exibirNaTela()
+
+function exibirNaTela() {
+
+document.write('<style>');
+document.write('.blurred { filter: blur(2px); transition: filter 0.5s; }');
+document.write('</style>');
+
+
+document.write('<div style="text-align: center; color: white; font-weight: bold; font-size: 30px; margin-bottom: 15px;">Filmes com mulheres fortes:</div>');
+
+
+document.write('<div style="text-align: center;">');
+for (var i = 0; i < listaFilmes.length; i++) {
+  // Check if the current index is a multiple of 5
+  if (i % 5 === 0 && i !== 0) {
+    // Start a new row
+    document.write('</div><div style="clear: both;"></div><div style="text-align: center;">');
+  }
+
+
+  document.write('<div style="display: inline-block; text-align: center; margin: 10px;">');
+  document.write('<img src=' + listaFilmes[i] + ' alt="' + listaNomes[i] + '" class="blurred" onmouseout="unblurImage(this)" onmouseover="blurImage(this)" style="width: 150px; height: 220px;">');
+  document.write('<p style="color: white;">' + listaNomes[i] + '</p>');
+  document.write('</div>');
+}
+
+
+document.write('<div style="clear: both;"></div>');
+
+// JavaScript functions for blurring/unblurring on mouseover/mouseout
+document.write('<script>');
+document.write('function unblurImage(img) { img.classList.remove("blurred"); }');
+document.write('function blurImage(img) { img.classList.add("blurred"); }');
+document.write('</script>');
+
+}
+
