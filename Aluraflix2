@@ -1,0 +1,40 @@
+function adicionarFilme() {
+  var filmeFavorito = document.getElementById('filme').value;
+  var trailerFilmeFavorito = document.getElementById('trailer').value;
+
+  if (isValidURL(filmeFavorito) && isValidURL(trailerFilmeFavorito)) {
+    // Create an anchor element for the movie trailer link
+    var linkElement = document.createElement('a');
+    linkElement.href = trailerFilmeFavorito;
+    linkElement.target = '_blank'; // Open the link in a new tab/window
+
+    // Create an image element for the movie poster
+    var imgElement = document.createElement('img');
+    imgElement.src = filmeFavorito;
+
+    // Append the image to the link
+    linkElement.appendChild(imgElement);
+
+    // Get the container element
+    var elementoListaFilmes = document.getElementById('listaFilmes');
+
+    // Append the link to the list
+    elementoListaFilmes.appendChild(linkElement);
+
+    // Clear the input fields
+    document.getElementById('filme').value = '';
+    document.getElementById('trailer').value = '';
+  } else {
+    alert('URL inválida, por favor utilize URLs válidas para o filme e o trailer.');
+  }
+}
+
+// Function to check if a string is a valid URL
+function isValidURL(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
