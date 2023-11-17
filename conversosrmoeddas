@@ -1,0 +1,25 @@
+function fnConverterDollar() {
+  let yourName = document.getElementById("yourName").value;
+  let valueDollar = document.getElementById("valueDollar").value;
+  const convertDollarBR = 4.89;
+  const convertDollarEUR = 0.9346;
+
+  valueDollar = valueDollar.replace(",", ".");
+  let valueReal = valueDollar * convertDollarBR;
+  valueReal = valueReal.toFixed(2);
+
+  let valueEuro = valueDollar * convertDollarEUR;
+  valueEuro = valueEuro.toFixed(2);
+
+  alert(
+    "Olá " +
+      yourName +
+      "!" +
+      " A cotação do valor USD $" +
+      valueDollar +
+      " em BRL foi de R$" +
+      valueReal +
+      " enquanto em EUR foi €" +
+      valueEuro
+  );
+}
